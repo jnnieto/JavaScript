@@ -26,4 +26,14 @@ $(document).ready(function () {
                 .html( "Dropped!" );
           }
     });
+
+    //Efectos
+    $('#mostrar').click(function() {
+        $('.caja-efectos').toggle("shake", 4000)
+        //Más efectos en https://jqueryui.com/demos/
+    });
+
+    //Tooltip
+
+    $(document).tooltip()
 }); 
