@@ -1,0 +1,26 @@
+body{
+    background: url('../img/hojas.jpg');
+    background-attachment: fixed;
+}
+
+#logo{
+    background: #235E3D;
+}
+
+#menu ul li:hover{
+    background: #235E3D;
+}
+
+.button-more{
+    background: #235E3D;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"]{
+    box-shadow: 0px 0px 2px #235E3D;
+}
+
+form input[type="submit"]{
+    border: 1px solid #235E3D;  
+}
