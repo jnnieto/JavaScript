@@ -228,3 +228,19 @@ footer{
     color: white;
     background-color: black;
 }
+
+#box{
+    width: 60%;
+    float: left;
+    margin-top: 40px;
+}
+
+#box h2{
+    font-size: 30px;
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#acordeon{
+    margin-top: 20px;
+}

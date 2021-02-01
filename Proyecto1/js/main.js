@@ -1,14 +1,16 @@
 $(document).ready(function(){
 
     //Slider
-    $('#bxslider').bxSlider({
-        mode: 'fade',
-        captions: true,
-        slideWidth: 1200,
-        responsive: true
-      });
-
+    if (window.location.href.indexOf('index') > -1) {
+        $('#bxslider').bxSlider({
+            mode: 'fade',
+            captions: true,
+            slideWidth: 1200,
+            responsive: true
+          });
+    }
     //Post
+    if (window.location.href.indexOf('index') > -1) {
     var posts = [
         {
             tittle: 'Prueba de titulo',
@@ -44,6 +46,8 @@ $(document).ready(function(){
 
         $('#posts').append(post)
     });
+}
+
 
     //Selector de tema
     var theme = $('#theme')
@@ -65,4 +69,27 @@ $(document).ready(function(){
         }, 500);
         return false;
     });
+
+    //Login falso
+    $('#login form').submit(function() {
+        var form_name = $('#form_name').val();
+        localStorage.setItem("Form_Name", form_name)
+    });
+
+    var formName = localStorage.getItem("Form_Name");
+
+    if (formName != null && formName != "undefined") {
+        var about_parrafo = $('#about p');
+        about_parrafo.html("Bienvenido, " + formName);
+        about_parrafo.append("<br><a href='#' id='logout'>Cerrar sesión</a>");
+        $('#login').hide();
+        $('#logout').click(function() {
+            localStorage.clear();
+            location.reload();
+        });
+    }
+
+    if (window.location.href.indexOf('about') > -1) {
+        $('#acordeon').accordion()
+    }
 })
