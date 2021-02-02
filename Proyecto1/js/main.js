@@ -92,4 +92,18 @@ $(document).ready(function(){
     if (window.location.href.indexOf('about') > -1) {
         $('#acordeon').accordion()
     }
+
+    if (window.location.href.indexOf('reloj') > -1) {
+        //Reloj
+        setInterval(function() {
+            var reloj = moment().format("hh:mm:ss");
+            $('#reloj').html(reloj);
+        }, 1000);
+    }
+
+    if (window.location.href.indexOf('contacto') > -1) {
+        // $.validate({
+        //     lang: 'es'
+        // });
+    }
 })
