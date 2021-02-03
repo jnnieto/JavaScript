@@ -1,15 +1,11 @@
-//Clase JSON
-
-var bicicleta = {
-    color: "Rojo",
-    modelo: "BNX",
-    tipo_frenos: "Discos",
-    velocidad_max: "20 Km/h",
-    cambiarColor: function(nuevoColor){
-        this.color = nuevoColor;
+//import { Camiseta } from './camiseta'
+var Main = /** @class */ (function () {
+    function Main() {
+        console.log("Aplicación de JS caragada!!");
     }
-};
-
-bicicleta.cambiarColor("Azul");
-
-console.log(bicicleta)
+    Main.prototype.getCamiseta = function () {
+        return new Camiseta("Verde", "Manga corta", "Nike", "L", 129000);
+    };
+    return Main;
+}());
+var main = new Main();
