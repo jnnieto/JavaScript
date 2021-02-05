@@ -65,7 +65,7 @@ var Camiseta = /** @class */ (function () {
         this.precio = value;
     };
     Camiseta = __decorate([
-        estampar('Guccu Gang')
+        estampar("Guccu Gang")
         //Clase (molde de objeto)
     ], Camiseta);
     return Camiseta;
@@ -110,7 +110,7 @@ var Tienda;
     var Informatica = /** @class */ (function () {
         function Informatica(titulo) {
             this.titulo = titulo;
-            alert('Tienda de tecnología: ' + titulo);
+            alert("Tienda de tecnología: " + titulo);
         }
         return Informatica;
     }());
@@ -118,7 +118,7 @@ var Tienda;
 })(Tienda || (Tienda = {}));
 //Lamar el módulo
 var Informatica = Tienda.Informatica;
-var cargar_informatica = new Informatica('Súper Tienda');
+var cargar_informatica = new Informatica("Súper Tienda");
 //Decorador
 function arranque(lanzar) {
     return function (target) {
@@ -143,7 +143,7 @@ var Programa = /** @class */ (function () {
 }());
 var programas = [];
 function guardar() {
-    var nombre = document.getElementById("nombre").value.toString();
+    var nombre = (document.getElementById("nombre")).value.toString();
     var programa = new Programa();
     programa.setNombre(nombre);
     programas.push(programa);
@@ -151,6 +151,6 @@ function guardar() {
     for (var i = 0; i < programas.length; i++) {
         list = list + "<li>" + programas[i].getNombre() + "</li>";
     }
-    var listado = document.getElementById('listado');
+    var listado = document.getElementById("listado");
     listado.innerHTML = list;
 }
