@@ -15,17 +15,17 @@ export class VideoJuegoComponent implements OnInit, DoCheck, OnDestroy {
     }
 
     ngOnInit() {
-        console.log('OnInit ejecutado!')
+        // console.log('OnInit ejecutado!')
     }
 
     ngDoCheck() {
         //Este método se ejecuta cuando se modifica el componente
-        console.log('DoCheck ejecutado')
+        // console.log('DoCheck ejecutado')
     }
 
     ngOnDestroy() {
         //Este método se ejecuta cuando se desea destruir el componente (Ciclo de vida del componente)
-        console.log("OnDestroy ejecutado!!")
+        // console.log("OnDestroy ejecutado!!")
     }
 
     cambiarTitulo() {

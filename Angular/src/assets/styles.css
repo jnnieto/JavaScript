@@ -1,0 +1,13 @@
+.altoPrecio{
+    background-color: red;
+    color: white;
+}
+
+.tipo-letra{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.subrayado{
+    text-decoration: underline;
+}
