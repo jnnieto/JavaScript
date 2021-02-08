@@ -525,6 +525,18 @@
   </svg>
 
 </div>
+
+<!-- Menú de navegación instantáneo -->
+<nav>
+  <a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>
+  &nbsp;
+  <a [routerLink]="['/zapatillas']" [routerLinkActive]="['active']">Zapatillas</a>
+  &nbsp;
+  <a [routerLink]="['/cursos']" [routerLinkActive]="['active']">Cursos</a>
+  &nbsp;
+  <a [routerLink]="['/videojuego']" [routerLinkActive]="['active']">VideoJuegos</a>
+</nav>
+
 <div class="clase-angular">
   <!-- <button class="card" (click)="ocultarVideojuegos(false)" *ngIf="mostrar_videojuegos">Ocultar</button>
   <button class="card" (click)="ocultarVideojuegos(true)" *ngIf="!mostrar_videojuegos">Mostrar</button>
