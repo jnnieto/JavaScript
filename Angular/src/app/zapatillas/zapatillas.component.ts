@@ -1,31 +1,30 @@
-import { fromEventPattern } from "rxjs";
 import { Component, OnInit } from '@angular/core'   
 import { Zapatilla } from '../models/zapatilla'
+import { ZapatillaService } from '../service/zapatilla.service';
 
 @Component({
     selector: 'zapatillas',
-    templateUrl: './zapatillas.component.html'
+    templateUrl: './zapatillas.component.html',
+    providers: [ZapatillaService]
 })
 export class ZapatillasComponent implements OnInit{
     public titulo = 'Este es el componente de Zapatillas';
-    public zapatillas: Array<Zapatilla>;
+    public zapatillas: Array<Zapatilla> = [];
     public marcas: String[];
     public color: string;
     public miMarca: string;
 
-    constructor() {
+    constructor(
+        private _zapatillaService: ZapatillaService
+    ) {
         this.color = "red";
         this.marcas = new Array();
-        this.zapatillas = [
-            new Zapatilla('Reebook Classic', 'Reebook', 'Blanco', 280000, true),
-            new Zapatilla('SuperStar', 'Adidas', 'Negro', 360000, true),
-            new Zapatilla('Vans Classic', 'Vans', 'Vinotinto', 200000, false)
-        ]
         this.miMarca = "Fila";
     }
 
     ngOnInit() {
-        console.log(this.zapatillas)
+        this.zapatillas = this._zapatillaService.getZapatillas();
+        //alert(this._zapatillaService.getTexto())
         this.getMarcas();
     }
 

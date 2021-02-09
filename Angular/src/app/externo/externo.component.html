@@ -1,0 +1,41 @@
+<!-- Pipes -->
+{{ fecha | date:'dd/MM/yy' }}<br>
+{{ fecha | date:'fullDate' | uppercase }}<br>
+{{ 'HOLA MUNDO USANDO PIPES' | lowercase}}<br>
+{{ 4 | calculadora: 2 }}
+<hr>
+<!-- Peticiones a un API con AJAX -->
+<h2>Usuarios con petición AJAX</h2>
+<input type="text" [(ngModel)]="user_id" (keyup.enter)="cargarUsuario()">
+<div *ngIf="!user">
+    Cargando!!
+</div>
+<div *ngIf="user">
+    <img src="{{ user.avatar }}" alt="" width="200">
+    <h2>{{ user.first_name + ' ' + user.last_name }}</h2>
+</div>
+
+<!-- Formulario -->
+<h2>Crear un usuario</h2>
+<form #newUser="ngForm" (ngSubmit)="onSubmit(new_user)">
+    <p>
+        <label for="name">Nombre</label>
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="new_user.name" required pattern="[a-zA-Z]+">
+        <span *ngIf="name.touched && !name.valid">
+            El name es obligatorio
+        </span>
+    </p>
+    <p>
+        <label for="job">Job</label>
+        <input type="text" name="job" #job="ngModel" [(ngModel)]="new_user.job" required pattern="[a-zA-Z]+">
+        <span *ngIf="job.touched && !job.valid">
+            El job es obligatorio
+        </span>
+    </p>
+    <input type="submit" value="Guardar usuario" [disabled]="!newUser.form.valid">
+</form>
+
+<div *ngIf="usuario_guardado">
+    <h3>{{ usuario_guardado.name }}</h3>
+    <h3>{{ usuario_guardado.job }}</h3>
+</div>
