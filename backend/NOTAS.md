@@ -8,6 +8,6 @@ Body-parser--> Librería que sirver para convertir las peticiones al backend a u
 
 Connect--> Permite subir archivos al backend
 
-Mongose--> Librería para trabajar con MongoDB con metodos ya preeestablecidos
+Mongoose--> Librería para trabajar con MongoDB con metodos ya preeestablecidos
 
 Nodemon--> Hacer que el servidor de nodeJS se actualice cada vez que se hacen cambios al proyecto  (--save-dev)
