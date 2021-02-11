@@ -35,7 +35,57 @@ var controller = {
             //Se envía el dato a la base de datos
             res.status(500).send({ project: projectStore })
         });
+    },
+    //Método para listar un documneto por medio de su id
+    getProject: function(req, res) {
+        var projectId = req.params.id;
+        if(projectId == null) return res.status(404).send({ message: "No se ha encontrado el proyecto" })
+
+        //Buscar en la base de datos po medio de id del documento
+        Project.findById(projectId, function(error, project) {
+            if(error) return res.status(500).send({ message: "Error al devolver los datos" })
+
+            if(!project) return res.status(404).send({ message: "No se ha encontrado el proyecto" })
+
+            res.status(500).send({ project })
+        })
+    },
+    //Método para obtener todos los proyectos
+    getProjects: function(req, res) {         /*Ordenar por atributo*/
+        Project.find({/*Se filtra por tributo*/ }).sort('name').exec((error, projects) => {
+            if(error) return res.status(500).send({ message: "Error al enviar los datos" })
+
+            if(!projects) return res.status(404).send({ message: "No hay ningún proyecto para mostrar" })
+
+            res.status(200).send({ projects })
+        })
+    },
+    //Método para actualizar algún proyecto
+    updateProject: function(req, res) {
+        var projectId = req.params.id;
+        var update = req.body;
+        //Tomar el id y actualizar lo que tenga ese documento
+        Project.findByIdAndUpdate(projectId, update, {new: true}, ((error, projectUpdate) =>  {
+            if(error) return res.status(500).send({ message: "Error al actualizar el proyecto" })
+
+            if(!projectUpdate) return res.status(404).send({ message: "No se encontró el proyecto para actualizar" })
+
+            res.status(200).send({ projectUpdate })
+        }))
+    },
+    //Método para borrar un proyecto
+    deleteProject: function(req, res) {
+        var projectId = req.params.id;
+
+        Project.findByIdAndRemove(projectId, (error, projectRemoved) =>{
+            if(error) return res.status(500).send({ message: "Error al borrar el proyecto" })
+
+            if(!projectRemoved) return res.status(404).send({ message: "No se encontró el proyecto para eliminar" })
+
+            res.status(200).send({ projectRemoved})
+        })
     }
-};
+
+ };
 
 module.exports = controller;
