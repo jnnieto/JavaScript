@@ -150,3 +150,6 @@ function guardar() {
   var listado = <HTMLElement>document.getElementById("listado");
   listado.innerHTML = list;
 }
+
+var camiseta2 = new Camiseta()
+camiseta2.setColor("Rojo")

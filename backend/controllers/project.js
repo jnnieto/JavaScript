@@ -2,6 +2,7 @@
 
 //Importar el modelo de projects
 const Project = require('../models/project')
+const fs = require('fs')
 
 var controller = {
     home: function(req, res) {
@@ -84,8 +85,38 @@ var controller = {
 
             res.status(200).send({ projectRemoved})
         })
-    }
+    },
+    //Método para cargar un imagen a la base de datos
+    uploadImage: function(req, res) {
+        var projectId = req.params.id;
+        var file_name = 'Imagen no subida';
+        //Validar de que exista el elemento
+        if(req.files) {
+            var file_path = req.files.image.path;
+            var file_split = file_path.split('\\');
+            file_name = file_split[1];
+            var exSplit = file_name.split('\.');
+            var fileExt = exSplit[1];
 
+            if(fileExt == 'png' || fileExt=='jpg' || fileExt == 'jpeg' || fileExt == 'gif') {
+                //Actualizar la imagen del documento
+                Project.findByIdAndUpdate(projectId, {image: file_name}, {new: true}, (error, projectUpdate) => {
+                    if(error) return res.status(500).send({ message: "La imagen no se subió correctamente" })
+                    
+                    if(!projectUpdate) return res.status(404).send({ message: "No existe ese proyecto" })
+                    
+                    return res.status(200).send({project: projectUpdate})
+                })
+            } else {
+                //Método "unlink" para eliminar el archivo en caso de que no sea válido el tipo de archivo
+                fs.unlink(file_path, (error) => {
+                    return res.status(200).send({ message: "La extesión no es válida" })
+                })
+            }
+        } else {
+            return res.status(200).send({ message: file_name })
+        }
+    }
  };
 
 module.exports = controller;
