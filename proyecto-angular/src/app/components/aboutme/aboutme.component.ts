@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aboutme.component.css']
 })
 export class AboutmeComponent implements OnInit {
-
-  constructor() { }
+  public title: string;
+  public subtitle: string;
+  public email: string;
+  constructor() {
+    this.title = "Nicolás Nieto";
+    this.subtitle = "Estudiante de desarrollo web e ingeniería de sistemas en la Universidad de Cundinamarca";
+    this.email = "niconieto1506@gmail.com"
+  }
 
   ngOnInit(): void {
   }
